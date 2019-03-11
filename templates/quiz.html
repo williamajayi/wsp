@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<title>WSP Quiz App</title>
+
+	<link rel="stylesheet" type="text/css" href="../static/style.css" />
+</head>
+
+<body>
+
+	<div id="page-wrap">
+		<center>
+		<h1>WSP Test</h1>
+	</center>
+		<form action="/test?id={{id}}" method="post" id="quiz">
+
+            <ul>
+
+                <li>
+
+                    <h3>Question {{ sn }}: {{ q['text'] }}</h3>
+
+                    <div><p>
+                        <input type="radio" name="options" id="optA" value="{{ q['options'][0] }}" />
+                        <label for="optA"> {{ q['options'][0] }} </label></p>
+                    </div>
+
+                    <div>
+											<input type="radio" name="options" id="optB" value="{{ q['options'][1] }}" />
+											<label for="optB"> {{ q['options'][1] }} </label></p>
+                    </div>
+
+                    <div>
+											<input type="radio" name="options" id="optC" value="{{ q['options'][2] }}" />
+											<label for="optC"> {{ q['options'][2] }} </label></p>
+                    </div>
+
+                    <div>
+											<input type="radio" name="options" id="optD" value="{{ q['options'][3] }}" />
+											<label for="optD"> {{ q['options'][3] }} </label></p>
+                    </div>
+
+										<div>
+											<input type="hidden" name="answer" id="answer" value="{{ q['answer'] }}" />
+                    </div>
+
+                </li>
+
+            </ul>
+
+            <input type="submit" value="Next" />
+
+		</form>
+
+	</div>
+
+	<!-- <script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+	var pageTracker = _gat._getTracker("UA-68528-29");
+	pageTracker._initData();
+	pageTracker._trackPageview();
+	</script> -->
+
+</body>
+
+</html>

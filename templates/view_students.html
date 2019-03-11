@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<title>WSP Quiz App</title>
+
+	<link rel="stylesheet" type="text/css" href="../static/style.css" />
+</head>
+
+<body>
+
+	<div>
+		<center>
+			<h1>Enrolled Students</h1>
+			<table cellspacing='0'>
+				<thead>
+					<tr>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Email</th>
+						<th>Username</th>
+						<th>Test taken</th>
+						<th>Score</th>
+						<th>Grade</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					{% for user in data %}
+						<tr>
+							<td>{{ user[1] }}</td>
+							<td>{{ user[2] }}</td>
+							<td>{{ user[3] }}</td>
+							<td>{{ user[4] }}</td>
+							<td>
+								{% if user[6] == 0 %}
+								No
+								{% else %}
+								Yes
+								{% endif %}
+							</td>
+							<td>
+								{{ user[7] }}%
+							</td>
+							<td>
+								{% if user[7] >= 40 %}
+								Passed
+								{% else %}
+								Failed
+								{% endif %}
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+
+			</table>
+		</center>
+	</div>
+
+</body>
+
+</html>

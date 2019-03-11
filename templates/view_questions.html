@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<title>WSP Quiz App</title>
+
+	<link rel="stylesheet" type="text/css" href="../static/style.css" />
+</head>
+
+<body>
+
+	<div>
+
+	  <center><h1>Question Bank</h1>
+
+		<table cellspacing='0'>
+			<thead>
+				<tr>
+					<th>Question</th>
+					<th>Option A</th>
+					<th>Option B</th>
+					<th>Option C</th>
+					<th>Option D</th>
+					<th>Correct Answer</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for question in questions %}
+					<tr>
+						<td>{{ question['text'] }}</td>
+						{% for option in question['options'] %}
+						<td>
+								Option: {{ option }}
+						</td>
+						{% endfor %}
+						<td>
+							{{ question['answer'] }}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+
+		</table>
+
+							<!-- {% for question in questions %}
+								<h3>Question: {{question['text']}}</h3>
+
+								{% for option in question['options'] %}
+									<p>Option: {{ option }}</p>
+								{% endfor %}
+
+								<p>Answer: {{ question['answer'] }}</p>
+							{% endfor %} -->
+</center>
+	</div>
+
+</body>
+
+</html>

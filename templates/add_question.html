@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<title>WSP Quiz App</title>
+
+	<link rel="stylesheet" type="text/css" href="../static/style.css" />
+</head>
+
+<body>
+
+	<div id="page-wrap">
+		<center>
+		<h1>Post Questions</h1>
+
+		<form action="/admin/post" method="post" id="quiz">
+
+            <ul>
+                <li>
+									<div>
+											<label for="question">Question: </label>
+											<input type="text" name="question" value="" required/>
+									</div>
+                    <div>
+												<label for="ans_a">Option A: </label>
+                        <input type="text" name="ans_a" value="" required />
+                    </div>
+
+										<div>
+												<label for="ans_b">Option B: </label>
+                        <input type="text" name="ans_b" value="" required/>
+                    </div>
+										<div>
+												<label for="ans_c">Option C: </label>
+                        <input type="text" name="ans_c" value="" required/>
+                    </div>
+										<div>
+												<label for="ans_d">Option D: </label>
+                        <input type="text" name="ans_d" value="" required/>
+                    </div>
+										<div>
+												<label for="answer"> Answer: </label>
+                        <input type="text" name="answer" value="" required/>
+                    </div>
+
+                </li>
+
+            </ul>
+
+            <input type="submit" value="Post" />
+
+		</form>
+	</center>
+	</div>
+
+
+</body>
+
+</html>
