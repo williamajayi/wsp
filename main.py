@@ -182,6 +182,15 @@ def logout():
     session['loggedIn'] = False
     return redirect(url_for('login', loggedout = "true"))
 
+@app.route('/admin/logout')
+def adminLogout():
+    # return to login page if user is not logged in, you can't log out if you're not logged in
+    if not session.get('adminLogin'):
+        return redirect(url_for('adminLogin'))
+
+    session['adminLogin'] = False
+    return redirect(url_for('adminLogin', loggedout = "true"))
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     # get the log in state and redirect to the index page if true
