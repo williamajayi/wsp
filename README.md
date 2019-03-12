@@ -30,7 +30,7 @@ This handles displaying the score and grades for the test takers
 This area is available only to the admin users supposedly, the teachers and it takes care of displaying the questions in the bank.
 
 '/admin/students':
-This area is also available only to the admin users and it handles displaying the registered students in a table format with columns including their personal details, if the registered students have taken the test or not, as well as their scores and grades. It also computes the percentage passed or failed.
+This area is also available only to the admin users and it handles displaying the registered students in a table format with columns including their personal details, if the registered students have taken the test or not, as well as their scores and grades. It also computes the percentage passed or failed out of the students registered and taken the test.
 
 '/admin/post':
 This area is available only to the admin users for posting questions to the question bank.
