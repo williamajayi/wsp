@@ -91,7 +91,26 @@ def viewStudents():
         return redirect(url_for('adminLogin'))
 
     data = User.find_all()
-    return render_template("view_students.html", data=data)
+    passed = 0
+    failed = 0
+    attempts = 0
+    pass_rate = 0
+    fail_rate = 0
+
+    for d in data:
+        if d[7] >= 40 and d[6] != 0:
+            passed += 1
+        elif d[7]< 40 and d[6] != 0:
+            failed += 1
+        else:
+            attempts += 1
+
+    if attempts != len(data) and passed > 0:
+        pass_rate = int(passed/len(data)) * 100
+    elif attempts != len(data) and failed > 0:
+        fail_rate = int(failed/len(data)) * 100
+
+    return render_template("view_students.html", data=data, pass_rate=pass_rate, fail_rate=fail_rate)
 
 @app.route('/admin/post', methods=['GET','POST'])
 def postQuestion():

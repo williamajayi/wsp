@@ -83,6 +83,3 @@ class User:
                 connection.close()
                 return True
             return False
-
-user = User()
-print(user.find_by_username('inforep'))
