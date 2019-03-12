@@ -73,6 +73,10 @@ def results():
         user = User()
         user.update(username, status, percentage)
         student = user.find_by_username(username)
+
+        # reset the global variables
+        score = 0
+        test_data = []
         return render_template("results.html", user=student, percentage=int(percentage))
     except:
         return redirect(url_for('main'))
@@ -180,6 +184,7 @@ def logout():
     if not session.get('loggedIn'):
         return redirect(url_for('login'))
     session['loggedIn'] = False
+    session.clear()
     return redirect(url_for('login', loggedout = "true"))
 
 @app.route('/admin/logout')
@@ -189,6 +194,7 @@ def adminLogout():
         return redirect(url_for('adminLogin'))
 
     session['adminLogin'] = False
+    session.clear()
     return redirect(url_for('adminLogin', loggedout = "true"))
 
 @app.route('/login', methods=['GET', 'POST'])
