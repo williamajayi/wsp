@@ -8,6 +8,7 @@ app = Flask(__name__)
 
 questions = []
 data = []
+test_data = []
 score = 0
 
 @app.route('/')
@@ -23,7 +24,7 @@ def main():
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():
-    global score, data  #   get global variables
+    global score, test_data  #   get global variables
 
     # Check if user is logged in
     if not session.get('loggedIn'):
@@ -39,17 +40,17 @@ def test():
             score += 1
 
     # populate the data list if empty with the questions from file
-    if not data:
-        if open("questions.txt", "r"):
-            for question in open("questions.txt", "r"):
-                data.append(json.loads(question))
+    if not test_data:
+        if open("test.txt", "r"):
+            for question in open("test.txt", "r"):
+                test_data.append(json.loads(question))
 
     id = request.args.get('id', type=int)   # get the id parameter for question index
 
-    if id >= len(data) + 1: # check for end of questions in the data list
+    if id >= len(test_data) + 1: # check for end of questions in the data list
         return redirect(url_for('results'))
     else:
-        q = data[id-1]
+        q = test_data[id-1]
         sn = id
         id += 1
 
@@ -58,7 +59,7 @@ def test():
 
 @app.route('/results')
 def results():
-    global score
+    global score, test_data
     # Check if user is logged in or redirect to log in page
     if not session.get('loggedIn'):
         return redirect(url_for('login'))
@@ -68,7 +69,7 @@ def results():
         username = session.get("username")
         status = 1
         score = score
-        percentage = (score/len(data)) * 100
+        percentage = (score/len(test_data)) * 100
         user = User()
         user.update(username, status, percentage)
         student = user.find_by_username(username)
@@ -76,7 +77,7 @@ def results():
     except:
         return redirect(url_for('main'))
 
-@app.route('/admin/view')
+@app.route('/admin/view', methods=['GET', 'POST'])
 def viewQuestions():
     global data # retrieve the global variable database
 
@@ -88,6 +89,18 @@ def viewQuestions():
     if not data:
         for question in open("questions.txt", "r"):
             data.append(json.loads(question))
+
+    # post questions checked and create test questions from the bank
+    if request.method == 'POST':
+        checkval = request.form.getlist('chkQuestion') # get the values from the checkboxes in a list
+        for id in checkval:
+            for d in data:
+                # post questions from the bank only if they match the checked ones using their id's
+                if d['id'] == int(id):
+                    with open("test.txt", "a") as file:
+                        file.write(json.dumps(d) + '\n')    # write to a new file
+
+
 
     return render_template("view_questions.html", questions=data)
 
@@ -137,12 +150,19 @@ def postQuestion():
         ans_c = request.form['ans_c']
         ans_d = request.form['ans_d']
         answer = request.form['answer']
+        difficulty = request.form['difficulty']
+
+        # get the number of questions in the bank by counting
+        id = len(open("questions.txt").readlines(  ))
+        id += 1
 
         # create a data dictionary with the post data
         data = {
+            "id": id,
             "text": text,
             "options": [ans_a, ans_b, ans_c, ans_d],
-            "answer": answer
+            "answer": answer,
+            "difficulty": difficulty
         }
 
         # add the data dictionary to the question list and write to file

@@ -14,22 +14,30 @@
 	<div>
 
 	  <center><h1>Question Bank ({{ questions|length }})</h1>
+<form action="/admin/view" method="post">
 
 		<table cellspacing='0'>
+			<p><input type="submit" name="submit" value="Post Questions"></p>
 			<thead>
 				<tr>
+					<th>
+					</th>
 					<th>Question</th>
 					<th>Option A</th>
 					<th>Option B</th>
 					<th>Option C</th>
 					<th>Option D</th>
 					<th>Correct Answer</th>
+					<th>Difficulty</th>
 				</tr>
 			</thead>
 
 			<tbody>
 				{% for question in questions %}
 					<tr>
+						<td>
+							<input type="checkbox" name="chkQuestion" value="{{question['id']}}">
+						</td>
 						<td>{{ question['text'] }}</td>
 						{% for option in question['options'] %}
 						<td>
@@ -39,21 +47,15 @@
 						<td>
 							{{ question['answer'] }}
 						</td>
+						<td>
+							{{ question['difficulty'] }}
+						</td>
 					</tr>
 				{% endfor %}
 			</tbody>
 
 		</table>
-
-							<!-- {% for question in questions %}
-								<h3>Question: {{question['text']}}</h3>
-
-								{% for option in question['options'] %}
-									<p>Option: {{ option }}</p>
-								{% endfor %}
-
-								<p>Answer: {{ question['answer'] }}</p>
-							{% endfor %} -->
+</form>
 </center>
 	</div>
 

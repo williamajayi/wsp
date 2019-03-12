@@ -18,39 +18,47 @@
 		<form action="/admin/post" method="post" id="quiz">
 
             <ul>
-                <li>
+                <li>									
 									<div>
-											<label for="question">Question: </label>
+											<label for="question">Question </label>
 											<input type="text" name="question" value="" required/>
 									</div>
                     <div>
-												<label for="ans_a">Option A: </label>
+												<label for="ans_a">Option A </label>
                         <input type="text" name="ans_a" value="" required />
                     </div>
 
 										<div>
-												<label for="ans_b">Option B: </label>
+												<label for="ans_b">Option B </label>
                         <input type="text" name="ans_b" value="" required/>
                     </div>
 										<div>
-												<label for="ans_c">Option C: </label>
+												<label for="ans_c">Option C </label>
                         <input type="text" name="ans_c" value="" required/>
                     </div>
 										<div>
-												<label for="ans_d">Option D: </label>
+												<label for="ans_d">Option D </label>
                         <input type="text" name="ans_d" value="" required/>
                     </div>
 										<div>
-												<label for="answer"> Answer: </label>
+												<label for="answer"> Answer </label>
                         <input type="text" name="answer" value="" required/>
                     </div>
+
+										<div>
+											<label for="difficulty"> Difficulty </label>
+											<select name="difficulty">
+												<option value="low">Low</option>
+												<option value="medium">Medium</option>
+												<option value="high">High</option>
+											</select>
+										</div>
 
                 </li>
 
             </ul>
-
-            <input type="submit" value="Post" />
-
+						<input type="reset" name="reset" value="Reset Fields">
+            <input type="submit" value="Post Question" />
 		</form>
 	</center>
 	</div>

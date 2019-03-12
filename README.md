@@ -27,7 +27,7 @@ This takes care of loading the questions from a file and displaying to the stude
 This handles displaying the score and grades for the test takers
 
 '/admin/view':
-This area is available only to the admin users supposedly, the teachers and it takes care of displaying the questions in the bank.
+This area is available only to the admin users supposedly, the teachers and it takes care of displaying the questions in the bank with checkboxes to allow teachers select the questions with different difficulties they want to post as the test questions from the question bank. A post questions button is located at the top of the page.
 
 '/admin/students':
 This area is also available only to the admin users and it handles displaying the registered students in a table format with columns including their personal details, if the registered students have taken the test or not, as well as their scores and grades. It also computes the percentage passed or failed out of the students registered and taken the test.
