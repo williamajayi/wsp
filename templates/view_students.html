@@ -47,6 +47,8 @@
 							<td>
 								{% if user[7] >= 40 %}
 								Passed
+								{% elif user[6] == 0 %}
+								None
 								{% else %}
 								Failed
 								{% endif %}
