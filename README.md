@@ -3,20 +3,23 @@ This app allows students to register and take the created test questions by thei
 Once a student has taken the test, that student gets taken to a results page notifying them whether they have passed or failed the test.
 The teacher can also view the students that have attempted the test as well as their test scores and percentage grades in a single location.
 
-Requirements:
+#Requirements:
 python version 3.7
 Flask version 1.0.2
 Jinja2 version 2.10
 requests version 2.21.0
 
-Usage: commands
+
+#Usage: commands
 Virtualenv venv --python=python3.7 (Create the virtual environment)
 . venv/bin/activate (Activate the virtual environment on a UNIX like system)
 pip install -r requirements.txt (Install the dependencies)
+python create_table.py (Create database and table to store user and admin information)
 python main.py  (Launch the application)
 
-Documentation:
+#Documentation:
 This application was built with Python and Flask micro-framework for rapid application development. It has several endpoints which are as follows in the order :
+
 '/':
 Serves as an index page that welcomes the student immediately after a successful log in.
 
